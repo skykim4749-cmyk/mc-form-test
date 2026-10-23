@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>문의하기 — MC Next 외부 폼 배치 예시</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<!--
+  MC Next 외부 폼 배치 예시 (2026-10-23, 샌드박스 「외부 폼 테스트」 MCV4SWQ5K3CFE75OF5BETI5OYARI)
+  - 폼 안쪽(입력칸·버튼)은 Salesforce 폼 설정으로만 바뀜. 이 페이지 CSS는 폼 바깥(크기·위치·카드)만 담당
+  - 폼은 Salesforce 사이트 iframe으로 들어오므로, 이 페이지 도메인이 샌드박스 신뢰 도메인에 등록돼 있어야 표시됨
+-->
+<style>
+  :root { --text:#1f1f1f; --sub:#555; --line:rgba(0,0,0,.1); --bg:#fff; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif; }
+  .wrap { max-width:1280px; margin:0 auto; padding:72px 16px 96px; }
+  h1 { margin:0 0 20px; font-size:56px; font-weight:700; letter-spacing:-0.02em; }
+  .lead { margin:0 0 72px; font-size:22px; color:var(--sub); }
+  .layout { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+  .intro h2 { margin:0 0 24px; font-size:16px; font-weight:600; }
+  .logos { display:flex; flex-wrap:wrap; gap:16px 32px; color:#888; font-weight:700; }
+  .form-card { border:1px solid var(--line); border-radius:24px; padding:32px; background:#fff; }
+  /* MC Next 폼 태그: 카드 폭에 맞춰 늘어남 */
+  .form-card [data-external-form] { display:block; width:100%; }
+  @media (max-width: 860px) {
+    h1 { font-size:40px; }
+    .lead { font-size:18px; margin-bottom:40px; }
+    .layout { grid-template-columns:1fr; }
+    .form-card { padding:20px; border-radius:16px; }
+  }
+</style>
+<!-- Insert these <script> tags directly above the embedded form. -->
+<script async="async" src="https://makinarocks--sb.sandbox.my.site.com/lp/assets/scripts/external-forms-host.min.js"></script>
+<script async="async" src="https://makinarocks--sb.sandbox.my.site.com/lp/assets/lightning_out_embed/prod/ko/MCV4SWQ5K3CFE75OF5BETI5OYARI.js" onload="window.sfdc_forms?sfdc_forms.init():window.sfdc_forms={loReady:!0}"></script>
+</head>
+<body>
+  <main class="wrap">
+    <h1>문의하기</h1>
+    <p class="lead">산업 현장을 지능화하는 AI의 시작, 지금 문의하세요.</p>
+
+    <div class="layout">
+      <section class="intro">
+        <h2>마키나락스와 함께하는 기업들</h2>
+        <div class="logos"><span>DOOSAN</span><span>emart</span><span>FURIOSA</span></div>
+      </section>
+
+      <section class="form-card">
+        <!-- This tag contains the form. Add it to your page where you want the form to be located. -->
+        <fragment-z4vkko27hai1jtcrc2gq04xixhwoyd51w9uvxousguh title="Marketing Form" id="container" data-web-tracking="true" data-recaptcha-site-key="" data-external-form="true"></fragment-z4vkko27hai1jtcrc2gq04xixhwoyd51w9uvxousguh>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
